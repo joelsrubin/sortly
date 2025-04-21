@@ -4,12 +4,7 @@ import AddItemForm from './AddItemForm';
 interface AddItemModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (item: {
-    name: string;
-    category: string;
-    price: string;
-    completedAt: string;
-  }) => void;
+  onSubmit: (item: { name: string; category: string; price: string }) => void;
 }
 
 const AddItemModal = ({ isOpen, onClose, onSubmit }: AddItemModalProps) => {

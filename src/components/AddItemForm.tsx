@@ -4,12 +4,7 @@ import { Input } from '@/components/ui/input';
 import { SelectComponent } from './SelectComponent';
 
 interface AddItemFormProps {
-  onSubmit: (item: {
-    name: string;
-    category: string;
-    price: string;
-    completedAt: string;
-  }) => void;
+  onSubmit: (item: { name: string; category: string; price: string }) => void;
   onCancel: () => void;
 }
 
@@ -20,7 +15,6 @@ const AddItemForm = ({ onSubmit, onCancel }: AddItemFormProps) => {
     name: '',
     category: categories[0],
     price: '',
-    completedAt: new Date().toISOString().split('T')[0],
   });
 
   const handleSubmit = (e: React.FormEvent) => {

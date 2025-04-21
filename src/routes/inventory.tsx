@@ -17,56 +17,48 @@ export const Route = createFileRoute('/inventory')({
 });
 
 function Inventory() {
-  const headers = ['Name', 'Category', 'Price', 'Last Updated'];
+  const headers = ['Name', 'Category', 'Price'];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [data, setData] = useState([
     {
       name: 'PVC Pipe (10ft)',
       category: 'Pipes',
       price: '12.99',
-      completedAt: '2024-03-20',
     },
     {
       name: 'Copper Elbow Joint',
       category: 'Fittings',
       price: '4.50',
-      completedAt: '2024-03-19',
     },
     {
       name: 'Bathroom Faucet',
       category: 'Fixtures',
       price: '89.99',
-      completedAt: '2024-03-18',
     },
     {
       name: 'Toilet Flange',
       category: 'Parts',
       price: '15.75',
-      completedAt: '2024-03-17',
     },
     {
       name: 'Pipe Wrench',
       category: 'Tools',
       price: '24.99',
-      completedAt: '2024-03-16',
     },
     {
       name: 'Drain Snake',
       category: 'Tools',
       price: '32.50',
-      completedAt: '2024-03-15',
     },
     {
       name: 'Shower Head',
       category: 'Fixtures',
       price: '45.99',
-      completedAt: '2024-03-14',
     },
     {
       name: 'Water Heater Element',
       category: 'Parts',
       price: '18.25',
-      completedAt: '2024-03-13',
     },
   ]);
 
@@ -109,10 +101,7 @@ function Inventory() {
                 <TableRow key={index}>
                   <TableCell className="font-medium">{row.name}</TableCell>
                   <TableCell>{row.category}</TableCell>
-                  <TableCell className="font-medium">{`$${row.price}`}</TableCell>
-                  <TableCell className="text-right">
-                    {row.completedAt}
-                  </TableCell>
+                  <TableCell className="font-medium text-right">{`$${row.price}`}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
