@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 
 import DarkModeToggle from '@/components//ui/DarkModeToggle';
+import { Wrench } from 'lucide-react';
 
 const Navigation = () => {
   return (
@@ -9,17 +10,18 @@ const Navigation = () => {
         <div className="flex justify-between items-center">
           <Link
             to="/"
-            className="text-2xl font-bold text-primary-light dark:text-primary-dark"
+            className="text-2xl font-bold text-primary-light dark:text-primary-dark flex items-center gap-2"
           >
-            🔧 SupplyLine
+            SupplyLine
+            <Wrench className="w-6 h-6" />
           </Link>
           <div className="flex items-center space-x-6">
             <div className="flex space-x-4">
               <Link
-                to={'/inventory'}
+                to={'/dashboard'}
                 className="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-dark"
               >
-                Inventory
+                Dashboard
               </Link>
             </div>
             <div className="border-l border-gray-200 dark:border-gray-700 pl-6">

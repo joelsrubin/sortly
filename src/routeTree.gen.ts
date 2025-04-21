@@ -11,20 +11,27 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as InventoryImport } from './routes/inventory'
 import { Route as IndexImport } from './routes/index'
+import { Route as DashboardIndexImport } from './routes/dashboard.index'
+import { Route as DashboardCategoryImport } from './routes/dashboard.$category'
 
 // Create/Update Routes
-
-const InventoryRoute = InventoryImport.update({
-  id: '/inventory',
-  path: '/inventory',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardIndexRoute = DashboardIndexImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardCategoryRoute = DashboardCategoryImport.update({
+  id: '/dashboard/$category',
+  path: '/dashboard/$category',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +46,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/inventory': {
-      id: '/inventory'
-      path: '/inventory'
-      fullPath: '/inventory'
-      preLoaderRoute: typeof InventoryImport
+    '/dashboard/$category': {
+      id: '/dashboard/$category'
+      path: '/dashboard/$category'
+      fullPath: '/dashboard/$category'
+      preLoaderRoute: typeof DashboardCategoryImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/inventory': typeof InventoryRoute
+  '/dashboard/$category': typeof DashboardCategoryRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/inventory': typeof InventoryRoute
+  '/dashboard/$category': typeof DashboardCategoryRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/inventory': typeof InventoryRoute
+  '/dashboard/$category': typeof DashboardCategoryRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/inventory'
+  fullPaths: '/' | '/dashboard/$category' | '/dashboard'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/inventory'
-  id: '__root__' | '/' | '/inventory'
+  to: '/' | '/dashboard/$category' | '/dashboard'
+  id: '__root__' | '/' | '/dashboard/$category' | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  InventoryRoute: typeof InventoryRoute
+  DashboardCategoryRoute: typeof DashboardCategoryRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  InventoryRoute: InventoryRoute,
+  DashboardCategoryRoute: DashboardCategoryRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +116,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/inventory"
+        "/dashboard/$category",
+        "/dashboard/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/inventory": {
-      "filePath": "inventory.tsx"
+    "/dashboard/$category": {
+      "filePath": "dashboard.$category.tsx"
+    },
+    "/dashboard/": {
+      "filePath": "dashboard.index.tsx"
     }
   }
 }

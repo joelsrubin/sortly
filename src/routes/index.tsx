@@ -17,8 +17,8 @@ function Index() {
         efficient, and beautiful.
       </p>
       <div className="flex justify-center space-x-4">
-        <Link to="/inventory">
-          <Button>Go to Inventory</Button>
+        <Link to="/dashboard">
+          <Button>Go to Dashboard</Button>
         </Link>
         <Button variant="outline">Learn More</Button>
       </div>
