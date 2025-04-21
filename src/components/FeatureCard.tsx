@@ -86,9 +86,7 @@ export default function CategoryNavigation() {
               to={`/dashboard/$category`}
               disabled={category.disabled}
               params={{ category: category.id }}
-              className={`group flex items-start gap-3 rounded-lg border p-3 text-left transition-colors ${
-                !category.disabled && 'hover:bg-muted/50'
-              } ${category.disabled && 'opacity-50'}`}
+              className="group flex items-start gap-3 rounded-lg border p-3 text-left transition-colors aria-disabled:opacity-50 aria-disabled:cursor-not-allowed hover:not-aria-disabled:bg-muted/50"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
                 <Icon className="h-5 w-5" />
