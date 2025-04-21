@@ -11,14 +11,14 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as FeaturesImport } from './routes/features'
+import { Route as InventoryImport } from './routes/inventory'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
-const FeaturesRoute = FeaturesImport.update({
-  id: '/features',
-  path: '/features',
+const InventoryRoute = InventoryImport.update({
+  id: '/inventory',
+  path: '/inventory',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +39,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/features': {
-      id: '/features'
-      path: '/features'
-      fullPath: '/features'
-      preLoaderRoute: typeof FeaturesImport
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/features': typeof FeaturesRoute
+  '/inventory': typeof InventoryRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/features': typeof FeaturesRoute
+  '/inventory': typeof InventoryRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/features': typeof FeaturesRoute
+  '/inventory': typeof InventoryRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/features'
+  fullPaths: '/' | '/inventory'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/features'
-  id: '__root__' | '/' | '/features'
+  to: '/' | '/inventory'
+  id: '__root__' | '/' | '/inventory'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  FeaturesRoute: typeof FeaturesRoute
+  InventoryRoute: typeof InventoryRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  FeaturesRoute: FeaturesRoute,
+  InventoryRoute: InventoryRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +97,14 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/features"
+        "/inventory"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/features": {
-      "filePath": "features.tsx"
+    "/inventory": {
+      "filePath": "inventory.tsx"
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
-import DarkModeToggle from './ui/DarkModeToggle';
+import DarkModeToggle from '@/components//ui/DarkModeToggle';
 
 const Navigation = () => {
   return (
@@ -11,15 +11,15 @@ const Navigation = () => {
             to="/"
             className="text-2xl font-bold text-primary-light dark:text-primary-dark"
           >
-            Sortly
+            🔧 SupplyLine
           </Link>
           <div className="flex items-center space-x-6">
             <div className="flex space-x-4">
               <Link
-                to={'/features'}
+                to={'/inventory'}
                 className="text-gray-600 hover:text-primary-light dark:text-gray-300 dark:hover:text-primary-dark"
               >
-                Features
+                Inventory
               </Link>
             </div>
             <div className="border-l border-gray-200 dark:border-gray-700 pl-6">
